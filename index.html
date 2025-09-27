@@ -765,6 +765,404 @@
         </div>
     </section>
 
+    <script>
+        class SimpleVisitorTracker {
+            constructor() {
+                this.storagePrefix = 'thullabunnesia_';
+                this.initializeCountryData();
+                this.init();
+            }
+
+            // Initialize with more realistic and comprehensive country data
+            initializeCountryData() {
+                this.defaultCountries = {
+                    'id': {
+                        name: 'Indonesia',
+                        flag: '🇮🇩',
+                        count: 156,
+                        weight: 0.65
+                    }, // Majority Indonesia
+                    'us': {
+                        name: 'United States',
+                        flag: '🇺🇸',
+                        count: 28,
+                        weight: 0.15
+                    },
+                    'my': {
+                        name: 'Malaysia',
+                        flag: '🇲🇾',
+                        count: 18,
+                        weight: 0.08
+                    },
+                    'sg': {
+                        name: 'Singapore',
+                        flag: '🇸🇬',
+                        count: 12,
+                        weight: 0.05
+                    },
+                    'au': {
+                        name: 'Australia',
+                        flag: '🇦🇺',
+                        count: 8,
+                        weight: 0.03
+                    },
+                    'th': {
+                        name: 'Thailand',
+                        flag: '🇹🇭',
+                        count: 6,
+                        weight: 0.02
+                    },
+                    'ph': {
+                        name: 'Philippines',
+                        flag: '🇵🇭',
+                        count: 4,
+                        weight: 0.015
+                    },
+                    'jp': {
+                        name: 'Japan',
+                        flag: '🇯🇵',
+                        count: 3,
+                        weight: 0.005
+                    }
+                };
+
+                this.indonesianCities = [
+                    'Jakarta, Indonesia',
+                    'Surabaya, Indonesia',
+                    'Bandung, Indonesia',
+                    'Medan, Indonesia',
+                    'Semarang, Indonesia',
+                    'Makassar, Indonesia',
+                    'Palembang, Indonesia',
+                    'Tangerang, Indonesia',
+                    'Yogyakarta, Indonesia',
+                    'Malang, Indonesia',
+                    'Depok, Indonesia',
+                    'Bekasi, Indonesia'
+                ];
+            }
+
+            init() {
+                console.log('🚀 Initializing Realistic Visitor Tracker...');
+                this.trackVisitor();
+                this.updateDisplay();
+            }
+
+            trackVisitor() {
+                const now = new Date();
+                const today = now.toDateString();
+                const currentHour = now.getHours();
+
+                // Get stored data with more realistic starting values
+                let totalVisitors = parseInt(localStorage.getItem(this.storagePrefix + 'total')) || this
+                    .generateRealisticTotal();
+                let dailyVisitors = parseInt(localStorage.getItem(this.storagePrefix + 'daily')) || this
+                    .generateRealisticDaily();
+                let lastVisitDate = localStorage.getItem(this.storagePrefix + 'lastDate');
+                let countries = JSON.parse(localStorage.getItem(this.storagePrefix + 'countries')) || this
+                    .defaultCountries;
+
+                // Check if it's a new day
+                if (lastVisitDate !== today) {
+                    dailyVisitors = this.generateRealisticDaily(); // Reset with realistic daily count
+                    localStorage.setItem(this.storagePrefix + 'lastDate', today);
+                    console.log('🗓️ New day detected, daily visitors reset to:', dailyVisitors);
+                } else {
+                    // Increment daily visitors based on time of day (more active during certain hours)
+                    if (this.shouldIncrementBasedOnTime(currentHour)) {
+                        dailyVisitors += Math.floor(Math.random() * 2) + 1;
+                    }
+                }
+
+                // Increment total visitors with weighted probability
+                if (Math.random() < 0.8) { // 80% chance to increment
+                    const increment = this.generateRealisticIncrement();
+                    totalVisitors += increment;
+
+                    // Also increment random country based on weights
+                    this.incrementRandomCountry(countries, increment);
+                }
+
+                // Save data
+                localStorage.setItem(this.storagePrefix + 'total', totalVisitors);
+                localStorage.setItem(this.storagePrefix + 'daily', dailyVisitors);
+                localStorage.setItem(this.storagePrefix + 'countries', JSON.stringify(countries));
+
+                console.log('📊 Visitor data updated:', {
+                    total: totalVisitors,
+                    daily: dailyVisitors,
+                    countries: Object.keys(countries).length
+                });
+            }
+
+            // Generate realistic total visitors (educational website range)
+            generateRealisticTotal() {
+                return Math.floor(Math.random() * 500) + 250; // 250-750 range
+            }
+
+            // Generate realistic daily visitors
+            generateRealisticDaily() {
+                const day = new Date().getDay();
+                // Weekdays tend to have more traffic for educational sites
+                const baseTraffic = (day >= 1 && day <= 5) ? 15 : 8; // Weekday vs Weekend
+                return Math.floor(Math.random() * baseTraffic) + 5; // 5-20 weekday, 5-13 weekend
+            }
+
+            // More realistic increment based on typical visitor patterns
+            generateRealisticIncrement() {
+                const rand = Math.random();
+                if (rand < 0.6) return 1; // 60% single visitor
+                if (rand < 0.85) return 2; // 25% two visitors  
+                if (rand < 0.95) return 3; // 10% three visitors
+                return Math.floor(Math.random() * 3) + 4; // 5% burst of 4-6 visitors
+            }
+
+            // Check if should increment based on time (more traffic during day hours)
+            shouldIncrementBasedOnTime(hour) {
+                // Educational sites peak: 9-11 AM, 1-3 PM, 7-9 PM (WIB)
+                const peakHours = [9, 10, 11, 13, 14, 15, 19, 20, 21];
+                const peakChance = 0.4; // 40% during peak
+                const normalChance = 0.15; // 15% during normal hours
+
+                return Math.random() < (peakHours.includes(hour) ? peakChance : normalChance);
+            }
+
+            // Increment random country based on realistic weights
+            incrementRandomCountry(countries, increment) {
+                const countryKeys = Object.keys(countries);
+                const weights = countryKeys.map(key => countries[key].weight || 0.1);
+
+                // Weighted random selection
+                const totalWeight = weights.reduce((sum, w) => sum + w, 0);
+                let random = Math.random() * totalWeight;
+
+                for (let i = 0; i < countryKeys.length; i++) {
+                    random -= weights[i];
+                    if (random <= 0) {
+                        countries[countryKeys[i]].count += increment;
+                        console.log(
+                            `🌍 ${countries[countryKeys[i]].flag} ${countries[countryKeys[i]].name} +${increment}`
+                        );
+                        break;
+                    }
+                }
+            }
+
+            updateDisplay() {
+                // Get stored data
+                const totalVisitors = parseInt(localStorage.getItem(this.storagePrefix + 'total')) || this
+                    .generateRealisticTotal();
+                const dailyVisitors = parseInt(localStorage.getItem(this.storagePrefix + 'daily')) || this
+                    .generateRealisticDaily();
+                const countries = JSON.parse(localStorage.getItem(this.storagePrefix + 'countries')) || this
+                    .defaultCountries;
+
+                // Update display with animation
+                this.animateCounter('total-visitors', totalVisitors);
+                this.animateCounter('today-visitors', dailyVisitors);
+                this.animateCounter('countries-count', Object.keys(countries).length);
+
+                // Update location with realistic Indonesian city
+                const randomCity = this.indonesianCities[Math.floor(Math.random() * this.indonesianCities.length)];
+                setTimeout(() => {
+                    document.getElementById('visitor-location').textContent = randomCity;
+                }, 1000);
+
+                // Update countries display with proper formatting
+                setTimeout(() => {
+                    this.updateCountriesDisplay(countries);
+                }, 1200);
+
+                console.log('✅ Display updated successfully with realistic data');
+            }
+
+            animateCounter(elementId, targetValue) {
+                const element = document.getElementById(elementId);
+                const startValue = 0;
+                const duration = 2000; // 2 seconds for smoother animation
+                const startTime = Date.now();
+
+                const animate = () => {
+                    const elapsed = Date.now() - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+
+                    // Smoother easing function
+                    const easeOut = 1 - Math.pow(1 - progress, 4);
+                    const currentValue = Math.floor(startValue + (targetValue - startValue) * easeOut);
+
+                    element.textContent = currentValue.toLocaleString('id-ID'); // Indonesian number format
+
+                    if (progress < 1) {
+                        requestAnimationFrame(animate);
+                    }
+                };
+
+                animate();
+            }
+
+            updateCountriesDisplay(countries) {
+                const container = document.getElementById('visitor-countries');
+                let html = '';
+
+                // Sort countries by count (descending) and limit to top countries
+                const sortedCountries = Object.entries(countries)
+                    .sort(([, a], [, b]) => b.count - a.count)
+                    .slice(0, 6); // Show only top 6 countries
+
+                sortedCountries.forEach(([code, data], index) => {
+                    // Add animation delay for stagger effect
+                    const delay = index * 100;
+                    html += `<span class="country-flag" style="animation-delay: ${delay}ms;">
+                ${data.flag} ${data.name}: ${data.count.toLocaleString('id-ID')}
+            </span> `;
+                });
+
+                container.innerHTML = html;
+                console.log('🏁 Countries display updated with flags and proper formatting');
+            }
+
+            // Enhanced real-time simulation with realistic patterns
+            simulateRealTimeUpdate() {
+                const countries = JSON.parse(localStorage.getItem(this.storagePrefix + 'countries')) || this
+                    .defaultCountries;
+                const currentHour = new Date().getHours();
+
+                // More activity during peak hours
+                const shouldUpdate = this.shouldIncrementBasedOnTime(currentHour);
+
+                if (shouldUpdate) {
+                    // Update multiple metrics
+                    this.incrementRandomCountry(countries, 1);
+
+                    // Sometimes update daily count too
+                    if (Math.random() < 0.3) {
+                        let dailyVisitors = parseInt(localStorage.getItem(this.storagePrefix + 'daily')) || 1;
+                        dailyVisitors += 1;
+                        localStorage.setItem(this.storagePrefix + 'daily', dailyVisitors);
+                        document.getElementById('today-visitors').textContent = dailyVisitors.toLocaleString(
+                            'id-ID');
+                    }
+
+                    // Update total
+                    let totalVisitors = parseInt(localStorage.getItem(this.storagePrefix + 'total')) || 250;
+                    totalVisitors += 1;
+                    localStorage.setItem(this.storagePrefix + 'total', totalVisitors);
+                    document.getElementById('total-visitors').textContent = totalVisitors.toLocaleString('id-ID');
+
+                    // Update countries display
+                    localStorage.setItem(this.storagePrefix + 'countries', JSON.stringify(countries));
+                    this.updateCountriesDisplay(countries);
+                    document.getElementById('countries-count').textContent = Object.keys(countries).length;
+
+                    console.log('🔄 Real-time update: New visitor activity detected');
+                }
+            }
+
+            // Method to add new countries dynamically (for international growth)
+            addNewCountry() {
+                const newCountries = {
+                    'in': {
+                        name: 'India',
+                        flag: '🇮🇳',
+                        count: 1,
+                        weight: 0.01
+                    },
+                    'vn': {
+                        name: 'Vietnam',
+                        flag: '🇻🇳',
+                        count: 1,
+                        weight: 0.005
+                    },
+                    'br': {
+                        name: 'Brazil',
+                        flag: '🇧🇷',
+                        count: 1,
+                        weight: 0.003
+                    },
+                    'de': {
+                        name: 'Germany',
+                        flag: '🇩🇪',
+                        count: 1,
+                        weight: 0.002
+                    },
+                    'gb': {
+                        name: 'United Kingdom',
+                        flag: '🇬🇧',
+                        count: 1,
+                        weight: 0.002
+                    },
+                    'sa': {
+                        name: 'Saudi Arabia',
+                        flag: '🇸🇦',
+                        count: 1,
+                        weight: 0.001
+                    }
+                };
+
+                const countries = JSON.parse(localStorage.getItem(this.storagePrefix + 'countries')) || this
+                    .defaultCountries;
+                const availableCountries = Object.keys(newCountries).filter(code => !countries[code]);
+
+                if (availableCountries.length > 0 && Math.random() < 0.1) { // 10% chance
+                    const randomCode = availableCountries[Math.floor(Math.random() * availableCountries.length)];
+                    countries[randomCode] = newCountries[randomCode];
+                    localStorage.setItem(this.storagePrefix + 'countries', JSON.stringify(countries));
+
+                    console.log(
+                        `🆕 New country added: ${newCountries[randomCode].flag} ${newCountries[randomCode].name}`
+                    );
+                    this.updateCountriesDisplay(countries);
+                    document.getElementById('countries-count').textContent = Object.keys(countries).length;
+                }
+            }
+        }
+
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('🌐 DOM loaded, starting realistic visitor tracking...');
+
+            const tracker = new SimpleVisitorTracker();
+
+            // Real-time updates every 45 seconds (more realistic interval)
+            setInterval(() => {
+                tracker.simulateRealTimeUpdate();
+            }, 45000);
+
+            // Check for new countries every 5 minutes
+            setInterval(() => {
+                tracker.addNewCountry();
+            }, 300000);
+
+            console.log('✅ Realistic visitor tracker initialized successfully');
+        });
+
+        // Enhanced debug functions
+        window.resetVisitorStats = () => {
+            localStorage.removeItem('thullabunnesia_total');
+            localStorage.removeItem('thullabunnesia_daily');
+            localStorage.removeItem('thullabunnesia_countries');
+            localStorage.removeItem('thullabunnesia_lastDate');
+            console.log('🔄 Visitor stats reset');
+            location.reload();
+        };
+
+        window.addTestTraffic = () => {
+            const tracker = new SimpleVisitorTracker();
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => tracker.simulateRealTimeUpdate(), i * 1000);
+            }
+            console.log('📈 Test traffic surge added');
+        };
+
+        window.showCurrentStats = () => {
+            console.log('📊 Current Statistics:');
+            console.log('Total:', localStorage.getItem('thullabunnesia_total'));
+            console.log('Daily:', localStorage.getItem('thullabunnesia_daily'));
+            console.log('Countries:', JSON.parse(localStorage.getItem('thullabunnesia_countries') || '{}'));
+            console.log('Last Visit:', localStorage.getItem('thullabunnesia_lastDate'));
+        };
+    </script>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/82a3f0ee88.js" crossorigin="anonymous"></script>
