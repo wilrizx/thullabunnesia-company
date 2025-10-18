@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klaim Voucher Diskon - Thullabunnesia</title>
+    <link rel="icon" href="assets/logo-thullabunnesia.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #2d8659 0%, #1e6b47 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            padding: 20px 0;
+        }
+
+        .voucher-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 500px;
+            margin: 20px auto;
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo-container img {
+            max-width: 80px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+
+        .logo-container .app-name {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2d8659;
+            margin-bottom: 5px;
+        }
+
+        .logo-container i {
+            font-size: 60px;
+            color: #2d8659;
+        }
+
+        h4 {
+            color: #1e6b47;
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .quota-info {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 25px;
+            text-align: center;
+            border: 2px solid #a5d6a7;
+        }
+
+        .quota-info-title {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #2d8659;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .quota-badge {
+            display: inline-block;
+            background: white;
+            padding: 10px 18px;
+            border-radius: 25px;
+            margin: 5px;
+            font-weight: 600;
+            font-size: 14px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s;
+        }
+
+        .quota-badge:hover {
+            transform: translateY(-2px);
+        }
+
+        .quota-badge.limited {
+            background: linear-gradient(135deg, #2d8659 0%, #1e6b47 100%);
+            color: white;
+        }
+
+        .quota-badge.regular {
+            background: linear-gradient(135deg, #66bb6a 0%, #43a047 100%);
+            color: white;
+        }
+
+        .form-control {
+            border: 2px solid #c8e6c9;
+            border-radius: 12px;
+            padding: 14px 18px;
+            font-size: 16px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .form-control:focus {
+            border-color: #2d8659;
+            box-shadow: 0 0 0 0.2rem rgba(45, 134, 89, 0.25);
+            outline: none;
+        }
+
+        .form-control::placeholder {
+            text-transform: none;
+            font-weight: 400;
+            letter-spacing: normal;
+        }
+
+        .form-label {
+            color: #1e6b47;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #2d8659 0%, #1e6b47 100%);
+            border: none;
+            border-radius: 12px;
+            padding: 14px 30px;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.3s;
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(45, 134, 89, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #1e6b47 0%, #155234 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(45, 134, 89, 0.4);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-primary:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .alert {
+            border-radius: 12px;
+            border: none;
+            display: none;
+            padding: 15px 20px;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .alert.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .discount-badge {
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 28px;
+            margin: 10px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .badge-15 {
+            background: linear-gradient(135deg, #66bb6a 0%, #43a047 100%);
+            color: white;
+        }
+
+        .badge-30 {
+            background: linear-gradient(135deg, #2d8659 0%, #1e6b47 100%);
+            color: white;
+        }
+
+        .activation-code {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border: 3px dashed #2d8659;
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .activation-code h5 {
+            color: #1e6b47;
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .code-text {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1e6b47;
+            letter-spacing: 2px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            word-break: break-all;
+        }
+
+        .btn-copy {
+            background: #2d8659;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 12px 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 15px;
+        }
+
+        .btn-copy:hover {
+            background: #1e6b47;
+            transform: scale(1.05);
+        }
+
+        .price-details {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px solid #a5d6a7;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            color: #555;
+            font-size: 15px;
+        }
+
+        .price-row strong {
+            color: #1e6b47;
+        }
+
+        .price-row.total {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1e6b47;
+            border-top: 2px solid #81c784;
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+
+        .instructions {
+            background: linear-gradient(135deg, #fff9c4 0%, #fff59d 100%);
+            border-left: 5px solid #fbc02d;
+            padding: 18px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .instructions strong {
+            color: #f57f17;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+
+        .instructions ol {
+            margin: 10px 0 0 0;
+            padding-left: 20px;
+            color: #f57f17;
+        }
+
+        .instructions li {
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+
+        #result-section {
+            display: none;
+        }
+
+        #result-section.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        .limited-badge {
+            background: linear-gradient(135deg, #ffd54f 0%, #ffb300 100%);
+            color: #1e6b47;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-left: 8px;
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .btn-outline-secondary {
+            border: 2px solid #2d8659;
+            color: #2d8659;
+            border-radius: 12px;
+            padding: 12px 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-outline-secondary:hover {
+            background: #2d8659;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .success-icon {
+            font-size: 60px;
+            color: #2d8659;
+            margin: 20px 0;
+            animation: checkmark 0.5s ease;
+        }
+
+        @keyframes checkmark {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Islamic Pattern Decoration */
+        .islamic-decoration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.05;
+            background-image:
+                radial-gradient(circle at 20% 50%, transparent 30%, rgba(255, 255, 255, 0.1) 30%, rgba(255, 255, 255, 0.1) 40%, transparent 40%),
+                radial-gradient(circle at 80% 50%, transparent 30%, rgba(255, 255, 255, 0.1) 30%, rgba(255, 255, 255, 0.1) 40%, transparent 40%);
+            background-size: 100px 100px;
+        }
+
+        /* Responsive */
+        @media (max-width: 576px) {
+            .voucher-card {
+                padding: 25px;
+                margin: 10px;
+            }
+
+            h4 {
+                font-size: 20px;
+            }
+
+            .discount-badge {
+                font-size: 24px;
+                padding: 8px 20px;
+            }
+
+            .code-text {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Islamic Pattern Background Decoration -->
+    <div class="islamic-decoration"></div>
+
+    <div class="container">
+        <div class="voucher-card">
+            <!-- Logo -->
+            <div class="logo-container">
+                <!-- <i class="bi bi-book-fill"></i> -->
+                <img src="assets/logo-thullabunnesia.png" alt="">
+                <div class="app-name">Thullabunnesia</div>
+            </div>
+
+            <!-- Header -->
+            <h4 class="text-center">Klaim Voucher Diskon</h4>
+            <p class="text-center subtitle">Dapatkan akses premium pembelajaran Islami interaktif dengan harga spesial
+                showcase!</p>
+
+            <!-- Quota Info -->
+            <div class="quota-info">
+                <div class="quota-info-title">
+                    <i class="bi bi-info-circle me-1"></i>Kuota Voucher Tersedia
+                </div>
+                <div class="quota-badge limited">
+                    <i class="bi bi-star-fill me-1"></i>
+                    30% OFF: <span id="quota-30">10</span>/10
+                </div>
+                <div class="quota-badge regular">
+                    <i class="bi bi-tag-fill me-1"></i>
+                    15% OFF: <span id="quota-15">15</span>/10
+                </div>
+            </div>
+
+            <!-- Alert Messages -->
+            <div id="alert-success" class="alert alert-success" role="alert">
+                <i class="bi bi-check-circle-fill me-2"></i>
+                <span id="success-message"></span>
+            </div>
+
+            <div id="alert-error" class="alert alert-danger" role="alert">
+                <i class="bi bi-x-circle-fill me-2"></i>
+                <span id="error-message"></span>
+            </div>
+
+            <div id="alert-warning" class="alert alert-warning" role="alert">
+                <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                <span id="warning-message"></span>
+            </div>
+
+            <!-- Form Section -->
+            <div id="form-section">
+                <form id="voucher-form">
+                    <div class="mb-3">
+                        <label for="kode-voucher" class="form-label">Kode Voucher</label>
+                        <input type="text" class="form-control" id="kode-voucher"
+                            placeholder="Masukkan kode voucher (contoh: THULLAB15)" required>
+                        <small class="form-text text-muted">
+                            <i class="bi bi-info-circle me-1"></i>
+                            Setiap kode voucher hanya dapat diklaim 1x per pengguna
+                        </small>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="submit-btn">
+                        <i class="bi bi-check-circle me-2"></i>Validasi & Klaim Voucher
+                    </button>
+                </form>
+            </div>
+
+            <!-- Result Section -->
+            <div id="result-section">
+                <div class="text-center">
+                    <i class="bi bi-check-circle-fill success-icon"></i>
+                    <div id="discount-badge"></div>
+                    <p class="mt-2 text-muted fw-bold">Voucher berhasil diklaim!</p>
+                </div>
+
+                <!-- Price Details -->
+                <div class="price-details">
+                    <div class="price-row">
+                        <span><strong>Harga Normal</strong></span>
+                        <span><strong>Rp 15.000</strong></span>
+                    </div>
+                    <div class="price-row">
+                        <span>Diskon (<span id="discount-percent"></span>)</span>
+                        <span id="discount-amount" style="color: #43a047; font-weight: 600;">- Rp 0</span>
+                    </div>
+                    <div class="price-row total">
+                        <span>Total Bayar</span>
+                        <span id="final-price">Rp 15.000</span>
+                    </div>
+                </div>
+
+                <!-- Activation Code -->
+                <div class="activation-code">
+                    <h5><i class="bi bi-key-fill me-2"></i>Kode Aktivasi Anda</h5>
+                    <div class="code-text" id="activation-code">-</div>
+                    <button class="btn-copy" onclick="copyActivationCode()">
+                        <i class="bi bi-clipboard me-2"></i>Copy Kode
+                    </button>
+                </div>
+
+                <!-- Instructions -->
+                <div class="instructions">
+                    <strong><i class="bi bi-lightbulb-fill me-2"></i>Cara Menggunakan Kode Aktivasi</strong>
+                    <ol>
+                        <li>Copy kode aktivasi di atas dengan klik tombol "Copy Kode"</li>
+                        <li>Buka aplikasi <strong>Thullabunnesia</strong></li>
+                        <li>Masuk ke menu <strong>"Unlock Premium"</strong> atau <strong>"Fitur Main"</strong></li>
+                        <li>Paste kode aktivasi dan klik <strong>"Aktifkan"</strong></li>
+                        <li>Nikmati pembelajaran Islami interaktif tanpa batas!</li>
+                    </ol>
+                </div>
+
+                <button class="btn btn-outline-secondary w-100 mt-3" onclick="resetForm()">
+                    <i class="bi bi-arrow-clockwise me-2"></i>Klaim Voucher Lain
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+
+    <script>
+        // Database voucher dengan batasan kuota
+        const vouchers = {
+            'THULLAB30': {
+                discount: 30,
+                name: 'Diskon 30%',
+                valid: true,
+                maxQuota: 10,
+                priority: 1
+            },
+            'THULLAB15': {
+                discount: 15,
+                name: 'Diskon 15%',
+                valid: true,
+                maxQuota: 15,
+                priority: 2
+            }
+        };
+
+        const basePrice = 15000;
+        const STORAGE_KEY = 'thullab_voucher_claims';
+
+        function getVoucherClaims() {
+            const stored = localStorage.getItem(STORAGE_KEY);
+            if (!stored) {
+                const initial = {
+                    'THULLAB30': {
+                        claimed: 0,
+                        users: []
+                    },
+                    'THULLAB15': {
+                        claimed: 0,
+                        users: []
+                    }
+                };
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(initial));
+                return initial;
+            }
+            return JSON.parse(stored);
+        }
+
+        function saveVoucherClaims(claims) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(claims));
+        }
+
+        function updateQuotaDisplay() {
+            const claims = getVoucherClaims();
+            const remaining30 = vouchers['THULLAB30'].maxQuota - claims['THULLAB30'].claimed;
+            const remaining15 = vouchers['THULLAB15'].maxQuota - claims['THULLAB15'].claimed;
+
+            document.getElementById('quota-30').textContent = remaining30;
+            document.getElementById('quota-15').textContent = remaining15;
+
+            const quota30Element = document.getElementById('quota-30').parentElement;
+            const quota15Element = document.getElementById('quota-15').parentElement;
+
+            if (remaining30 <= 3 && remaining30 > 0) {
+                quota30Element.style.background = 'linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%)';
+                quota30Element.style.color = '#c62828';
+            }
+            if (remaining15 <= 3 && remaining15 > 0) {
+                quota15Element.style.background = 'linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%)';
+                quota15Element.style.color = '#c62828';
+            }
+            if (remaining30 === 0) {
+                quota30Element.innerHTML = '<i class="bi bi-x-circle me-1"></i>30% OFF: HABIS';
+                quota30Element.style.background = '#f44336';
+                quota30Element.style.color = 'white';
+            }
+            if (remaining15 === 0) {
+                quota15Element.innerHTML = '<i class="bi bi-x-circle me-1"></i>15% OFF: HABIS';
+                quota15Element.style.background = '#f44336';
+                quota15Element.style.color = 'white';
+            }
+        }
+
+        function getUserFingerprint() {
+            const nav = navigator;
+            const screen = window.screen;
+            const fingerprint = `${nav.userAgent}_${screen.width}x${screen.height}_${nav.language}`;
+            return btoa(fingerprint).substr(0, 20);
+        }
+
+        function hasUserClaimed(voucherCode) {
+            const claims = getVoucherClaims();
+            const userFingerprint = getUserFingerprint();
+            return claims[voucherCode].users.includes(userFingerprint);
+        }
+
+        function isQuotaAvailable(voucherCode) {
+            const claims = getVoucherClaims();
+            const voucher = vouchers[voucherCode];
+            return claims[voucherCode].claimed < voucher.maxQuota;
+        }
+
+        function claimVoucher(voucherCode) {
+            const claims = getVoucherClaims();
+            const userFingerprint = getUserFingerprint();
+            claims[voucherCode].claimed++;
+            claims[voucherCode].users.push(userFingerprint);
+            saveVoucherClaims(claims);
+            updateQuotaDisplay();
+        }
+
+        window.addEventListener('DOMContentLoaded', function () {
+            updateQuotaDisplay();
+            const urlParams = new URLSearchParams(window.location.search);
+            const codeParam = urlParams.get('code');
+
+            if (codeParam) {
+                document.getElementById('kode-voucher').value = codeParam.toUpperCase();
+                setTimeout(() => {
+                    const event = new Event('submit', {
+                        bubbles: true,
+                        cancelable: true
+                    });
+                    document.getElementById('voucher-form').dispatchEvent(event);
+                }, 800);
+            }
+        });
+
+        document.getElementById('voucher-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const voucherCode = document.getElementById('kode-voucher').value.toUpperCase().trim();
+            validateVoucher(voucherCode);
+        });
+
+        document.getElementById('kode-voucher').addEventListener('input', function (e) {
+            e.target.value = e.target.value.toUpperCase();
+        });
+
+        function validateVoucher(code) {
+            hideAlerts();
+            if (!code) {
+                showError('Silakan masukkan kode voucher');
+                return;
+            }
+
+            const voucher = vouchers[code];
+            if (!voucher || !voucher.valid) {
+                showError('Kode voucher tidak valid. Periksa kembali kode Anda.');
+                return;
+            }
+            if (hasUserClaimed(code)) {
+                showWarning(
+                    'Anda sudah pernah mengklaim voucher ini sebelumnya. Setiap pengguna hanya dapat mengklaim 1x.');
+                return;
+            }
+            if (!isQuotaAvailable(code)) {
+                showError(`Maaf, kuota voucher ${voucher.name} sudah habis. Silakan coba voucher lainnya.`);
+                return;
+            }
+
+            claimVoucher(code);
+            showSuccess(`Selamat! Voucher ${voucher.name} berhasil diklaim!`);
+            displayVoucherResult(code, voucher);
+        }
+
+        function displayVoucherResult(code, voucher) {
+            document.getElementById('form-section').style.display = 'none';
+            document.getElementById('result-section').classList.add('show');
+
+            const badgeClass = voucher.discount === 15 ? 'badge-15' : 'badge-30';
+            let badgeHTML = `<span class="discount-badge ${badgeClass}">${voucher.discount}% OFF</span>`;
+
+            if (voucher.priority === 1) {
+                badgeHTML += '<span class="limited-badge"><i class="bi bi-star-fill me-1"></i>LIMITED</span>';
+            }
+
+            document.getElementById('discount-badge').innerHTML = badgeHTML;
+
+            const discountAmount = basePrice * (voucher.discount / 100);
+            const finalPrice = basePrice - discountAmount;
+
+            document.getElementById('discount-percent').textContent = `${voucher.discount}%`;
+            document.getElementById('discount-amount').textContent = `- Rp ${discountAmount.toLocaleString('id-ID')}`;
+            document.getElementById('final-price').textContent = `Rp ${finalPrice.toLocaleString('id-ID')}`;
+
+            const activationCode = generateActivationCode(code);
+            document.getElementById('activation-code').textContent = activationCode;
+        }
+
+        function generateActivationCode(voucherCode) {
+            const timestamp = Date.now().toString(36).toUpperCase();
+            const random = Math.random().toString(36).substr(2, 4).toUpperCase();
+            return `ACT-${voucherCode}-${timestamp}-${random}`;
+        }
+
+        function copyActivationCode() {
+            const codeText = document.getElementById('activation-code').textContent;
+            navigator.clipboard.writeText(codeText).then(function () {
+                const btn = event.target.closest('.btn-copy');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<i class="bi bi-check-lg me-2"></i>Tersalin!';
+                btn.style.background = '#28a745';
+
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.style.background = '#2d8659';
+                }, 2000);
+            }).catch(function (err) {
+                alert('Gagal menyalin. Silakan copy manual.');
+            });
+        }
+
+        function resetForm() {
+            document.getElementById('form-section').style.display = 'block';
+            document.getElementById('result-section').classList.remove('show');
+            document.getElementById('voucher-form').reset();
+            hideAlerts();
+            updateQuotaDisplay();
+        }
+
+        function showSuccess(message) {
+            const alert = document.getElementById('alert-success');
+            document.getElementById('success-message').textContent = message;
+            alert.classList.add('show');
+        }
+
+        function showError(message) {
+            const alert = document.getElementById('alert-error');
+            document.getElementById('error-message').textContent = message;
+            alert.classList.add('show');
+        }
+
+        function showWarning(message) {
+            const alert = document.getElementById('alert-warning');
+            document.getElementById('warning-message').textContent = message;
+            alert.classList.add('show');
+        }
+
+        function hideAlerts() {
+            document.getElementById('alert-success').classList.remove('show');
+            document.getElementById('alert-error').classList.remove('show');
+            document.getElementById('alert-warning').classList.remove('show');
+        }
+
+        function resetAllQuotas() {
+            if (confirm('Reset semua kuota voucher? Ini akan menghapus semua data klaim.')) {
+                localStorage.removeItem(STORAGE_KEY);
+                updateQuotaDisplay();
+                alert('Kuota berhasil direset!');
+                location.reload();
+            }
+        }
+    </script>
+</body>
+
+</html>

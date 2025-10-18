@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kebijakan Privasi Thullabunnesia - Aplikasi Game Mobile Edukasi Islami">
+    <title>Kebijakan Privasi - Thullabunnesia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2D5F3F;
+            --secondary-color: #3A7D5C;
+            --accent-color: #F4A261;
+            --text-dark: #1A1A1A;
+            --text-light: #4A4A4A;
+            --text-muted: #666666;
+            --bg-light: #F8F9FA;
+            --bg-white: #FFFFFF;
+            --border-color: #E0E0E0;
+            --shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 4px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8f5e9 100%);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Header Styling */
+        .header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--bg-white);
+            padding: 80px 20px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 50%;
+        }
+
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .header h1 {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1em;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: -40px auto 60px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .privacy-card {
+            background: var(--bg-white);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: var(--shadow);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .privacy-card:hover {
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Typography */
+        h2 {
+            color: var(--primary-color);
+            font-size: 1.8em;
+            font-weight: 600;
+            margin: 40px 0 20px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid var(--accent-color);
+            position: relative;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        h3 {
+            color: var(--secondary-color);
+            font-size: 1.4em;
+            font-weight: 600;
+            margin: 30px 0 15px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+            text-align: justify;
+        }
+
+        /* Lists */
+        ul {
+            margin: 20px 0;
+            padding-left: 30px;
+        }
+
+        ul li {
+            margin-bottom: 12px;
+            color: var(--text-light);
+            line-height: 1.8;
+            position: relative;
+        }
+
+        ul li::marker {
+            color: var(--accent-color);
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
+            border-left: 5px solid var(--secondary-color);
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: #fff3e0;
+            border-left: 5px solid var(--accent-color);
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 10px;
+        }
+
+        .info-box h3 {
+            color: #e65100;
+            margin-top: 0;
+            font-size: 1.2em;
+        }
+
+        /* Warning Box - New */
+        .warning-box {
+            background: #fce4ec;
+            border-left: 5px solid #c2185b;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 10px;
+        }
+
+        .warning-box h3 {
+            color: #c2185b;
+            margin-top: 0;
+            font-size: 1.2em;
+        }
+
+        .warning-box p {
+            color: var(--text-dark);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--bg-white);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .contact-section h3 {
+            color: var(--bg-white);
+            margin-bottom: 15px;
+        }
+
+        .contact-section p {
+            color: var(--bg-white);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                padding: 60px 20px 40px;
+            }
+
+            .logo {
+                font-size: 2em;
+            }
+
+            .header h1 {
+                font-size: 1.5em;
+            }
+
+            .privacy-card {
+                padding: 30px 25px;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            .container {
+                margin: -30px auto 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.8em;
+            }
+
+            .header h1 {
+                font-size: 1.3em;
+            }
+
+            .privacy-card {
+                padding: 25px 20px;
+                border-radius: 15px;
+            }
+
+            h2 {
+                font-size: 1.3em;
+            }
+
+            h3 {
+                font-size: 1.1em;
+            }
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+            }
+
+            .header {
+                background: var(--primary-color);
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .privacy-card {
+                box-shadow: none;
+            }
+        }
+
+        /* Footer - Updated to match Thullabunnesia style */
+        .footer {
+            background: linear-gradient(135deg, #228B52 0%, #1e7a47 100%);
+            color: var(--bg-white);
+            padding: 0;
+            margin-top: 60px;
+            width: 100%;
+        }
+
+        .footer .container-fluid {
+            padding: 0;
+            margin: 0;
+            max-width: 100%;
+        }
+
+        .footer-content-wrapper {
+            padding: 40px 50px 30px;
+        }
+
+        .footer-left {
+            padding-right: 30px;
+        }
+
+        .footer-title {
+            font-size: 1.7rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: white;
+        }
+
+        .footer-description {
+            max-width: 470px;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: white;
+            opacity: 0.95;
+            text-align: left;
+        }
+
+        .footer-right {
+            border-left: 2px solid rgba(255, 255, 255, 0.5);
+            padding-left: 40px;
+        }
+
+        .footer-section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .footer-social-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .footer-social-link {
+            color: white;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .footer-social-link:hover {
+            transform: scale(1.15);
+            opacity: 0.85;
+            color: white;
+        }
+
+        .footer-social-link i {
+            font-size: 2.2rem;
+        }
+
+        .footer-logo-container {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .footer-logo-img {
+            height: 55px;
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-logo-img:hover {
+            transform: scale(1.08);
+        }
+
+        .footer-copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 18px 0;
+            text-align: center;
+            margin-top: 25px;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-copyright p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: white;
+            opacity: 0.95;
+            text-align: center;
+        }
+
+        .footer-copyright a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-copyright a:hover {
+            opacity: 0.75;
+            text-decoration: underline;
+        }
+
+        /* Responsive Footer Design */
+        @media (max-width: 991px) {
+            .footer-content-wrapper {
+                padding: 35px 30px 25px;
+            }
+
+            .footer-left {
+                padding-left: 0;
+                padding-right: 0;
+                text-align: center;
+                padding-bottom: 25px;
+                margin-bottom: 25px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            }
+
+            .footer-description {
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            .footer-right {
+                border-left: none;
+                padding-left: 0;
+                padding-top: 0;
+            }
+
+            .footer-social-links {
+                justify-content: center;
+            }
+
+            .footer-logo-container {
+                justify-content: center;
+                margin-left: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-content-wrapper {
+                padding: 30px 25px 20px;
+            }
+
+            .footer-title {
+                font-size: 1.4rem;
+            }
+
+            .footer-section-title {
+                font-size: 1.15rem;
+            }
+
+            .footer-social-link i {
+                font-size: 2rem;
+            }
+
+            .footer-logo-img {
+                height: 48px;
+            }
+
+            .footer-copyright p {
+                font-size: 0.88rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-content-wrapper {
+                padding: 25px 20px 20px;
+            }
+
+            .footer-title {
+                font-size: 1.25rem;
+            }
+
+            .footer-description {
+                font-size: 0.92rem;
+            }
+
+            .footer-section-title {
+                font-size: 1.05rem;
+                margin-bottom: 12px;
+            }
+
+            .footer-social-links {
+                gap: 18px;
+            }
+
+            .footer-social-link i {
+                font-size: 1.8rem;
+            }
+
+            .footer-logo-img {
+                height: 42px;
+            }
+
+            .footer-logo-container {
+                gap: 18px;
+            }
+
+            .footer-copyright {
+                padding: 15px 10px;
+            }
+
+            .footer-copyright p {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">Thullabunnesia</div>
+            <h1>Kebijakan Privasi</h1>
+            <p>Terakhir diperbarui: 2 Oktober 2025</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="privacy-card fade-in">
+
+            <h2>Pendahuluan</h2>
+            <p>Selamat datang di Thullabunnesia. Kami menghargai privasi Anda dan berkomitmen untuk melindungi informasi
+                pribadi yang mungkin dikumpulkan saat Anda menggunakan aplikasi kami. Kebijakan Privasi ini menjelaskan
+                bagaimana kami mengumpulkan, menggunakan, menyimpan, dan melindungi informasi Anda saat menggunakan
+                aplikasi mobile game edukasi berbasis gamifikasi Thullabunnesia ("Aplikasi").</p>
+
+            <p>Dengan mengunduh, menginstal, dan menggunakan Aplikasi ini, Anda menyetujui pengumpulan dan penggunaan
+                informasi sesuai dengan Kebijakan Privasi ini. Jika Anda tidak setuju dengan ketentuan dalam Kebijakan
+                Privasi ini, mohon untuk tidak menggunakan Aplikasi kami.</p>
+
+            <h2>Informasi yang Kami Kumpulkan</h2>
+
+            <div class="highlight-box">
+                <p><strong>Penting:</strong> Karena Aplikasi Thullabunnesia tidak memerlukan pendaftaran akun atau
+                    login, kami <strong>tidak mengumpulkan informasi pribadi</strong> seperti nama, alamat email, nomor
+                    telepon, atau data identitas pribadi lainnya.</p>
+            </div>
+
+            <h3>Data Non-Pribadi yang Dikumpulkan Secara Otomatis</h3>
+            <p>Kami dapat mengumpulkan informasi non-pribadi terbatas yang bersifat teknis untuk meningkatkan kualitas
+                Aplikasi, termasuk:</p>
+            <ul>
+                <li>Jenis perangkat dan model perangkat</li>
+                <li>Sistem operasi dan versinya</li>
+                <li>Informasi penggunaan aplikasi (seperti waktu bermain dan progres gameplay)</li>
+                <li>Data performa aplikasi untuk keperluan perbaikan bug dan peningkatan kualitas</li>
+                <li>Data statistik gameplay yang tidak terkait dengan identitas pribadi</li>
+                <li>Android Advertising ID (untuk keperluan analitik, bukan iklan)</li>
+                <li>Crash logs dan error reports untuk stabilitas aplikasi</li>
+            </ul>
+            <p>Informasi ini dikumpulkan secara anonim dan tidak dapat digunakan untuk mengidentifikasi pengguna secara
+                individual.</p>
+
+            <!-- SECTION BARU 1: Firebase & Google Analytics -->
+            <h2>Penggunaan Firebase dan Google Analytics</h2>
+            <p>Aplikasi Thullabunnesia menggunakan <strong>Firebase</strong> dan <strong>Google Analytics for
+                    Firebase</strong> yang disediakan oleh Google LLC untuk mengumpulkan data analitik dan meningkatkan
+                kualitas aplikasi. Firebase dapat mengumpulkan informasi berikut secara otomatis:</p>
+            <ul>
+                <li><strong>Informasi Perangkat:</strong> Model perangkat, versi sistem operasi Android, versi aplikasi,
+                    bahasa perangkat, dan identitas perangkat unik (Device ID)</li>
+                <li><strong>Data Penggunaan Aplikasi:</strong> Fitur yang digunakan, durasi penggunaan, frekuensi
+                    penggunaan, interaksi dengan gameplay, dan progres level</li>
+                <li><strong>Data Teknis:</strong> Crash reports, error logs, performa aplikasi, waktu respons, dan
+                    stabilitas aplikasi</li>
+                <li><strong>Data Analitik:</strong> Android Advertising ID, event tracking, dan statistik penggunaan
+                    fitur</li>
+            </ul>
+            <p>Data ini dikumpulkan dan diproses oleh Google Firebase sesuai dengan <a
+                    href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener"
+                    style="color: var(--secondary-color); font-weight: 600;">Kebijakan Privasi Google Firebase</a>. Data
+                ini digunakan secara agregat untuk meningkatkan kualitas aplikasi dan tidak digunakan untuk
+                mengidentifikasi pengguna secara personal.</p>
+
+            <!-- SECTION BARU 2: Feedback Form -->
+            <h2>Formulir Feedback Pengguna</h2>
+            <p>Aplikasi ini menyediakan fitur <strong>formulir feedback</strong> yang memungkinkan pengguna memberikan
+                komentar, masukan, dan saran untuk pengembangan aplikasi. Informasi yang dikumpulkan melalui formulir
+                feedback meliputi:</p>
+            <ul>
+                <li><strong>Komentar atau Pesan:</strong> Teks yang ditulis oleh pengguna dalam formulir feedback</li>
+                <li><strong>Waktu Pengiriman:</strong> Tanggal dan waktu saat feedback dikirimkan</li>
+                <li><strong>Informasi Perangkat:</strong> Model perangkat dan versi sistem operasi (untuk keperluan
+                    troubleshooting teknis)</li>
+                <li><strong>ID Unik Sesi:</strong> Identitas sesi anonim untuk menghubungkan feedback dengan data teknis
+                    (jika diperlukan untuk debugging)</li>
+            </ul>
+            <p><strong>Penting:</strong> Kami <strong>tidak mengumpulkan informasi pribadi</strong> seperti nama, email,
+                nomor telepon, atau alamat melalui formulir feedback ini. Semua feedback yang diterima bersifat
+                <strong>anonim</strong> dan tidak dapat dilacak kembali ke individu tertentu.</p>
+            <p>Data feedback disimpan secara aman menggunakan <strong>Firebase Realtime Database</strong> atau
+                <strong>Firestore</strong> dan digunakan untuk:</p>
+            <ul>
+                <li>Meningkatkan kualitas dan fitur aplikasi</li>
+                <li>Memahami kebutuhan dan pengalaman pengguna</li>
+                <li>Memperbaiki bug atau masalah teknis yang dilaporkan</li>
+                <li>Mengembangkan konten edukatif yang lebih baik</li>
+            </ul>
+
+            <!-- SECTION BARU 3: Cookies dan Device Identifiers -->
+            <h2>Penggunaan Cookies dan Device Identifiers</h2>
+            <p>Firebase dan layanan Google Analytics menggunakan <strong>cookies</strong>, <strong>device
+                    identifiers</strong>, dan teknologi pelacakan serupa untuk mengumpulkan dan menyimpan informasi.
+                Teknologi ini digunakan untuk:</p>
+            <ul>
+                <li>Mengidentifikasi perangkat secara unik tanpa mengidentifikasi pengguna secara personal</li>
+                <li>Menganalisis pola penggunaan aplikasi dan perilaku pengguna secara agregat</li>
+                <li>Memantau performa, stabilitas, dan crash aplikasi</li>
+                <li>Mengumpulkan data untuk peningkatan pengalaman pengguna</li>
+            </ul>
+            <p>Device identifiers yang dapat dikumpulkan meliputi:</p>
+            <ul>
+                <li><strong>Android ID:</strong> Identitas unik perangkat Android</li>
+                <li><strong>Advertising ID:</strong> ID iklan Google (digunakan untuk analytics, bukan untuk menampilkan
+                    iklan tertarget)</li>
+                <li><strong>Firebase Installation ID:</strong> ID unik yang dibuat Firebase untuk setiap instalasi
+                    aplikasi</li>
+            </ul>
+            <p>Cookies dan identifiers ini tidak mengandung informasi pribadi dan tidak dapat digunakan untuk
+                mengidentifikasi individu secara langsung.</p>
+
+            <!-- SECTION BARU 4: Opt-Out Mechanism -->
+            <h2>Cara Opt-Out dari Pengumpulan Data Analitik</h2>
+            <p>Kami menghormati hak pengguna untuk mengontrol data mereka. Pengguna dapat membatasi pengumpulan data
+                analitik dengan cara berikut:</p>
+
+            <div class="warning-box">
+                <h3>Opsi untuk Perangkat Android</h3>
+                <p><strong>Langkah-langkah untuk Opt-Out:</strong></p>
+                <ul style="margin-bottom: 0;">
+                    <li>Buka <strong>Pengaturan</strong> pada perangkat Android Anda</li>
+                    <li>Navigasi ke <strong>Google</strong> → <strong>Iklan</strong></li>
+                    <li>Aktifkan opsi <strong>"Opt out of Ads Personalization"</strong></li>
+                    <li>Anda juga dapat mereset <strong>Advertising ID</strong> secara berkala</li>
+                </ul>
+            </div>
+
+            <p>Selain itu, pengguna juga dapat:</p>
+            <ul>
+                <li>Menonaktifkan izin aplikasi untuk mengakses data tertentu melalui pengaturan perangkat</li>
+                <li>Menghapus aplikasi untuk menghilangkan semua data lokal yang tersimpan</li>
+                <li>Menghubungi kami melalui email untuk permintaan khusus terkait data</li>
+            </ul>
+            <p><strong>Catatan:</strong> Menonaktifkan pengumpulan data analitik dapat mempengaruhi kemampuan kami untuk
+                meningkatkan kualitas aplikasi berdasarkan data penggunaan dan memperbaiki bug secara efektif.</p>
+
+            <h2>Penggunaan Data</h2>
+            <p>Data non-pribadi yang kami kumpulkan digunakan untuk tujuan berikut:</p>
+            <ul>
+                <li>Meningkatkan kualitas dan performa Aplikasi</li>
+                <li>Menganalisis cara pengguna berinteraksi dengan fitur-fitur dalam Aplikasi</li>
+                <li>Memperbaiki bug dan masalah teknis</li>
+                <li>Mengembangkan fitur dan konten edukatif yang lebih baik</li>
+                <li>Memastikan stabilitas dan keamanan Aplikasi</li>
+                <li>Memahami preferensi dan kebutuhan pengguna melalui feedback</li>
+                <li>Mengoptimalkan pengalaman bermain dan pembelajaran</li>
+            </ul>
+            <p>Kami <strong>tidak menggunakan</strong> data yang dikumpulkan untuk tujuan pemasaran, iklan tertarget,
+                atau pembagian data kepada pihak ketiga untuk tujuan komersial.</p>
+
+            <h2>Tidak Ada Login atau Registrasi</h2>
+            <p>Aplikasi Thullabunnesia dirancang untuk dapat digunakan tanpa memerlukan pembuatan akun, login, atau
+                registrasi. Pengguna dapat langsung memainkan game edukasi dan menjawab pertanyaan-pertanyaan keagamaan
+                tanpa memberikan informasi pribadi apapun.</p>
+
+            <h2>Keamanan Data</h2>
+            <p>Kami berkomitmen untuk melindungi data yang dikumpulkan dengan menerapkan langkah-langkah keamanan teknis
+                dan organisasional yang sesuai, termasuk:</p>
+            <ul>
+                <li>Enkripsi data saat transmisi menggunakan protokol HTTPS/SSL</li>
+                <li>Penyimpanan data di server Firebase yang aman dengan autentikasi dan otorisasi</li>
+                <li>Akses terbatas ke data hanya untuk personel yang berwenang</li>
+                <li>Monitoring dan audit keamanan secara berkala</li>
+            </ul>
+            <p>Meskipun kami mengambil langkah-langkah yang wajar untuk melindungi
+                informasi, tidak ada metode transmisi melalui internet atau metode penyimpanan elektronik yang 100%
+                aman. Kami tidak dapat menjamin keamanan mutlak data yang ditransmisikan melalui internet.</p>
+
+            <h2>Fitur dan Konten Aplikasi</h2>
+            <p>Aplikasi Thullabunnesia menyediakan berbagai fitur pembelajaran agama Islam yang dirancang untuk
+                pengalaman belajar yang interaktif dan menyenangkan. Aplikasi ini terdiri dari fitur-fitur berikut:</p>
+
+            <h3>1. Thullab Insight (Materi Pembelajaran)</h3>
+            <p>Fitur ini menyediakan materi pembelajaran Islami dalam bentuk <strong>bacaan saja</strong> tanpa
+                interaksi yang mengumpulkan data pengguna. Materi yang tersedia meliputi:</p>
+            <ul>
+                <li><strong>Fiqih:</strong> 6 materi tentang aturan dan tata cara beribadah dalam Islam yang membahas
+                    aturan hidup sehari-hari sesuai syariat Islam</li>
+                <li><strong>Aqidah Akhlak:</strong> 5 materi tentang keimanan dan akhlak mulia yang mengajarkan sikap
+                    dan kebiasaan baik untuk membentuk karakter mulia</li>
+            </ul>
+            <p>Semua materi bersifat read-only dan <strong>tidak mengumpulkan informasi</strong> tentang materi yang
+                dibaca, waktu membaca, atau progres pembelajaran pengguna.</p>
+
+            <h3>2. Thullab Doa</h3>
+            <p>Fitur ini berisi kumpulan doa-doa dalam Islam yang ditampilkan dalam bentuk <strong>bacaan saja</strong>.
+                Pengguna dapat membaca berbagai doa untuk keperluan sehari-hari. Tidak ada data yang dikumpulkan saat
+                pengguna membaca doa-doa ini.</p>
+
+            <h3>3. Thullab Adventure (Mode Game Edukatif)</h3>
+            <p>Fitur utama aplikasi yang menyediakan gameplay edukatif berbasis gamifikasi, termasuk:</p>
+            <ul>
+                <li><strong>Trial Mode:</strong> Mode percobaan yang memungkinkan pengguna bermain game dengan menjawab
+                    soal-soal tentang materi Fiqih, Aqidah Akhlak, dan Tajwid</li>
+                <li><strong>Pertanyaan dalam Gameplay:</strong> Soal-soal edukatif yang muncul selama permainan untuk
+                    menguji pemahaman pengguna tentang materi agama Islam</li>
+                <li><strong>Sistem Gamifikasi:</strong> Elemen permainan yang membuat pembelajaran lebih menyenangkan
+                    dan engaging</li>
+            </ul>
+            <p>Data yang dikumpulkan dari fitur ini hanya berupa <strong>statistik gameplay anonim</strong> seperti:</p>
+            <ul>
+                <li>Waktu bermain dan durasi sesi</li>
+                <li>Progres level dan pencapaian dalam game</li>
+                <li>Frekuensi penggunaan fitur</li>
+            </ul>
+            <p><strong>Penting:</strong> Kami <strong>tidak menyimpan data jawaban</strong> spesifik atau hasil
+                pembelajaran yang dapat diidentifikasi per individu. Semua data bersifat agregat dan anonim.</p>
+
+            <h3>4. Kebijakan Privasi</h3>
+            <p>Tombol yang mengarahkan pengguna ke halaman kebijakan privasi ini
+                (thullabunnesia.com/kebijakan-privasi.html) melalui browser eksternal. Tidak ada data yang dikumpulkan
+                saat pengguna mengakses kebijakan privasi.</p>
+
+            <h3>5. Feedback Form</h3>
+            <p>Fitur yang memungkinkan pengguna mengirimkan pesan atau komentar anonim untuk memberikan masukan kepada
+                pengembang. Detail lengkap tentang pengumpulan data feedback dijelaskan di section "Formulir Feedback
+                Pengguna" di atas.</p>
+
+            <h3>6. Exit</h3>
+            <p>Tombol untuk keluar dari aplikasi yang tidak mengumpulkan data apapun.</p>
+
+            <div class="highlight-box">
+                <p><strong>Catatan Penting:</strong> Semua fitur dalam aplikasi dirancang dengan prinsip
+                    privacy-by-design. Kami tidak mengumpulkan informasi pribadi atau data yang dapat mengidentifikasi
+                    pengguna secara individual. Konten eduklakatif disediakan untuk tujuan pembelajaran agama Islam dan
+                    tidak digunakan untuk tujuan komersial atau pemasaran.</p>
+            </div>
+
+
+            <h2>Privasi Anak-Anak</h2>
+            <p>Aplikasi ini dapat digunakan oleh pengguna dari berbagai usia termasuk anak-anak. Karena Aplikasi tidak
+                mengumpulkan informasi pribadi dan tidak memerlukan registrasi, kami tidak secara sengaja mengumpulkan
+                data pribadi dari anak-anak di bawah usia 13 tahun atau usia minimum yang ditetapkan oleh hukum
+                setempat.</p>
+            <p>Orang tua atau wali dapat mengizinkan anak-anak untuk menggunakan Aplikasi ini dengan aman karena tidak
+                ada pengumpulan data pribadi yang dilakukan. Kami mematuhi Children's Online Privacy Protection Act
+                (COPPA) dan peraturan perlindungan anak yang berlaku di Indonesia.</p>
+
+            <!-- SECTION BARU 5: Layanan Pihak Ketiga - Updated -->
+            <h2>Layanan Pihak Ketiga</h2>
+            <p>Aplikasi Thullabunnesia menggunakan layanan pihak ketiga berikut yang dapat mengumpulkan dan memproses
+                data pengguna:</p>
+
+            <h3>Firebase (Google LLC)</h3>
+            <ul>
+                <li><strong>Tujuan Penggunaan:</strong> Analitik aplikasi, crash reporting, performance monitoring, dan
+                    penyimpanan feedback pengguna</li>
+                <li><strong>Data yang Dibagikan:</strong> Informasi perangkat, data penggunaan aplikasi, crash logs,
+                    performance metrics, dan feedback pengguna anonim</li>
+                <li><strong>Lokasi Server:</strong> Data disimpan di server Google Cloud yang berlokasi di berbagai
+                    wilayah global</li>
+                <li><strong>Kebijakan Privasi:</strong> <a href="https://firebase.google.com/support/privacy"
+                        target="_blank" rel="noopener"
+                        style="color: var(--secondary-color); font-weight: 600;">https://firebase.google.com/support/privacy</a>
+                </li>
+            </ul>
+
+            <h3>Google Analytics for Firebase</h3>
+            <ul>
+                <li><strong>Tujuan Penggunaan:</strong> Menganalisis perilaku pengguna, mengukur engagement, dan
+                    memahami penggunaan fitur aplikasi</li>
+                <li><strong>Data yang Dibagikan:</strong> Event tracking, user interactions, device information, dan app
+                    usage statistics</li>
+                <li><strong>Kebijakan Privasi:</strong> <a href="https://policies.google.com/privacy" target="_blank"
+                        rel="noopener"
+                        style="color: var(--secondary-color); font-weight: 600;">https://policies.google.com/privacy</a>
+                </li>
+            </ul>
+
+            <p><strong>Penting:</strong> Kami <strong>tidak secara aktif membagikan</strong> informasi pribadi pengguna
+                kepada pihak ketiga lainnya untuk tujuan komersial, pemasaran, atau periklanan. Data yang dibagikan
+                dengan Firebase/Google bersifat agregat dan anonim, serta diproses sesuai dengan kebijakan privasi
+                Google.</p>
+
+            <h2>Tidak Ada Iklan Pihak Ketiga</h2>
+            <p>Saat ini, Aplikasi Thullabunnesia <strong>tidak menampilkan iklan</strong> dari pihak ketiga yang dapat
+                mengumpulkan
+                informasi pengguna untuk tujuan iklan tertarget. Aplikasi ini sepenuhnya fokus pada pengalaman belajar
+                yang bebas iklan.</p>
+
+            <h2>Penyimpanan dan Penghapusan Data</h2>
+            <p>Data non-pribadi yang dikumpulkan disimpan hanya selama diperlukan untuk tujuan yang dijelaskan dalam
+                Kebijakan Privasi ini. Kebijakan retensi data kami adalah sebagai berikut:</p>
+            <ul>
+                <li><strong>Data Analitik Firebase:</strong> Disimpan hingga 14 bulan oleh Google Analytics, kemudian
+                    dihapus secara otomatis</li>
+                <li><strong>Crash Logs:</strong> Disimpan hingga 90 hari untuk keperluan debugging</li>
+                <li><strong>Feedback Pengguna:</strong> Disimpan selama aplikasi aktif dikembangkan, namun dapat dihapus
+                    atas permintaan</li>
+            </ul>
+            <p>Pengguna dapat menghapus Aplikasi dari perangkat mereka kapan saja, yang akan menghilangkan semua data
+                lokal yang tersimpan di perangkat. Untuk menghapus data yang tersimpan di server Firebase, pengguna
+                dapat menghubungi kami melalui email yang tercantum di bagian Kontak.</p>
+
+            <h2>Transfer Data Internasional</h2>
+            <p>Data yang dikumpulkan melalui Firebase dapat diproses dan disimpan di server Google Cloud yang berlokasi
+                di berbagai negara, termasuk di luar Indonesia. Google menerapkan perlindungan data yang sesuai dengan
+                standar internasional termasuk GDPR (General Data Protection Regulation) untuk melindungi data pengguna.
+            </p>
+
+            <h2>Perubahan pada Kebijakan Privasi</h2>
+            <p>Kami dapat memperbarui Kebijakan Privasi ini dari waktu ke waktu untuk mencerminkan perubahan dalam
+                praktik kami atau untuk alasan operasional, hukum, atau regulasi lainnya. Perubahan akan diposting di
+                halaman ini dengan tanggal "Terakhir diperbarui" yang baru. Kami mendorong Anda untuk meninjau Kebijakan
+                Privasi ini secara berkala untuk mengetahui informasi terbaru tentang praktik privasi kami.</p>
+            <p>Jika terjadi perubahan material pada kebijakan ini, kami akan memberitahu pengguna melalui notifikasi
+                dalam aplikasi atau melalui saluran komunikasi lain yang tersedia.</p>
+            <p>Penggunaan Aplikasi yang berkelanjutan setelah perubahan Kebijakan Privasi berarti Anda menerima
+                perubahan tersebut.</p>
+
+            <h2>Hak Pengguna</h2>
+            <p>Sesuai dengan peraturan perlindungan data yang berlaku di Indonesia, termasuk UU No. 27 Tahun 2022
+                tentang Perlindungan Data Pribadi, pengguna memiliki hak untuk:</p>
+            <ul>
+                <li>Mengetahui data apa yang dikumpulkan dan bagaimana data tersebut digunakan</li>
+                <li>Mengakses data yang dikumpulkan tentang penggunaan aplikasi</li>
+                <li>Meminta penghapusan data yang tersimpan di server kami</li>
+                <li>Menarik persetujuan penggunaan data analitik melalui opt-out</li>
+                <li>Mengajukan keberatan terhadap pemrosesan data tertentu</li>
+                <li>Meminta portabilitas data dalam format yang dapat dibaca mesin</li>
+            </ul>
+            <p>Karena Aplikasi kami tidak mengumpulkan data pribadi yang dapat mengidentifikasi individu, hak-hak ini
+                secara otomatis terlindungi. Untuk mengajukan permintaan terkait data Anda, silakan hubungi kami melalui
+                email yang tercantum di bagian Kontak.</p>
+
+            <div class="info-box">
+                <h3>Catatan Penting untuk Upload ke Play Store</h3>
+                <p>Sebelum mengupload aplikasi ke Google Play Store, pastikan untuk:</p>
+                <ul>
+                    <li>Menyimpan kebijakan privasi ini di URL publik yang dapat diakses (sudah tersedia di
+                        thullabunnesia.com/kebijakan-privasi.html)</li>
+                    <li>URL harus aktif dan tidak dapat diedit oleh publik</li>
+                    <li>Isi kolom Privacy Policy di Play Console dengan URL:
+                        <strong>https://thullabunnesia.com/kebijakan-privasi.html</strong></li>
+                    <li>Lengkapi Formulir <strong>Data Safety</strong> di Play Console dengan jujur tentang penggunaan
+                        Firebase dan feedback form</li>
+                    <li>Deklarasikan penggunaan Firebase Analytics, Crash Reporting, dan Feedback Form di Data Safety
+                        section</li>
+                </ul>
+            </div>
+
+            <div class="contact-section">
+                <h3>Kontak Kami</h3>
+                <p>Jika Anda memiliki pertanyaan, kekhawatiran, permintaan penghapusan data, atau keluhan terkait
+                    Kebijakan Privasi ini atau
+                    praktik privasi kami, silakan hubungi kami di:</p>
+                <p><strong>Email:</strong> thullabunnesia@gmail.com</p>
+                <p><strong>Developer:</strong> Thullabunnesia</p>
+                <p><strong>Website:</strong> <a href="https://thullabunnesia.com"
+                        style="color: white; font-weight: 600;">https://thullabunnesia.com</a></p>
+                <p style="margin-top: 15px; margin-bottom: 0;">Kami akan merespons pertanyaan Anda dalam waktu 7-14 hari
+                    kerja.</p>
+            </div>
+
+            <h2>Yurisdiksi</h2>
+            <p>Kebijakan Privasi ini diatur oleh dan ditafsirkan sesuai dengan hukum yang berlaku di Republik Indonesia,
+                termasuk namun tidak terbatas pada UU No. 27 Tahun 2022 tentang Perlindungan Data Pribadi dan peraturan
+                pelaksanaannya.</p>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row footer-content-wrapper align-items-start g-0">
+                <!-- Kiri -->
+                <div class="col-lg-6 col-12 footer-left">
+                    <div class="footer-title">Thullabunnesia</div>
+                    <p class="footer-description mb-0">
+                        Aplikasi Pembelajaran Agama berbasis Gamifikasi yang seru dan menyenangkan
+                    </p>
+                </div>
+
+                <!-- Kanan -->
+                <div class="col-lg-6 col-12 footer-right">
+                    <div class="row g-0">
+                        <!-- Ikuti Kami -->
+                        <div class="col-12 col-md-5 mb-md-0 mb-4">
+                            <p class="footer-section-title mb-3">Ikuti Kami</p>
+                            <div class="footer-social-links">
+                                <a href="https://www.instagram.com/thullabunnesia/" class="footer-social-link"
+                                    aria-label="Instagram" target="_blank" rel="noopener">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </a>
+                                <a href="https://www.tiktok.com/@thullabunnesia5" class="footer-social-link"
+                                    aria-label="TikTok" target="_blank" rel="noopener">
+                                    <i class="fa-brands fa-tiktok"></i>
+                                </a>
+                                <a href="#" class="footer-social-link" aria-label="WhatsApp" target="_blank"
+                                    rel="noopener">
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/company/thullabunnesia/" class="footer-social-link"
+                                    aria-label="LinkedIn" target="_blank" rel="noopener">
+                                    <i class="fa-brands fa-linkedin"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Bagian Dari -->
+                        <div class="col-12 col-md-7">
+                            <p class="footer-section-title mb-3 ms-md-3 ms-0">Bagian dari</p>
+                            <div class="footer-logo-container ms-md-3 ms-0">
+                                <a href="#" aria-label="Unesa">
+                                    <img src="assets/unesa.webp" alt="Unesa Logo" class="footer-logo-img">
+                                </a>
+                                <a href="#" aria-label="P2MW">
+                                    <img src="assets/logo-p2mw-transparent.png" alt="P2MW Logo" class="footer-logo-img">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="footer-copyright">
+                <p>
+                    &copy; 2025 <a href="https://thullabunnesia.com">Thullabunnesia</a>. Semua Hak Cipta Dilindungi
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll animation on load
+        document.addEventListener('DOMContentLoaded', function () {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.style.animationDelay = `${index * 0.1}s`;
+                }, 100);
+            });
+        });
+
+        // Smooth scroll for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
